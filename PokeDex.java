@@ -8,6 +8,7 @@ public class PokeDex {
 
  /** 
    * main method.
+   * driver class.
    * @param args not used
    */
    public static void main(String[] args) {
@@ -16,6 +17,8 @@ public class PokeDex {
       Scanner reader = new Scanner(System.in);
       int x = 0;
       boolean endLoop = false; 
+      
+      PokeTree<Pokemon> pTree = new PokeTree<Pokemon>();
    
       while (!endLoop) {
          System.out.println("---HELLO,WELCOME---");
@@ -33,13 +36,13 @@ public class PokeDex {
                System.out.println("Good bye!");
                break;
             case "1":  
-                     //
+               pTree.add(makePokemon());
                break; 
             case "2": 
-               //
+               pTree.remove(makePokemon());
                break;   
             case "3": 
-               //
+               System.out.println("inorder:\n" + pTree.toString());                  
                break;      
             default: //not a valid menu entry
                System.out.println("\n****Invalid menu choice.****");
@@ -51,6 +54,7 @@ public class PokeDex {
    }
    /**
    * make pokemon static.
+   * for choosing pokemon in option 1 & 2.
    *@return null
    */
    public static Pokemon makePokemon() {
@@ -59,15 +63,15 @@ public class PokeDex {
       boolean endLoop2 = false; 
       while (!endLoop2) { 
          System.out.println("Please choose your own pokemon:");
-         System.out.println("1.for Bulbasaur");
-         System.out.println("2.for Ivysaur");
-         System.out.println("3.for Venusaur");
-         System.out.println("4.for Charmander");
-         System.out.println("5.for Charmeleon");
-         System.out.println("6.for Charizard");
-         System.out.println("7.for Squirtle");
-         System.out.println("8.for Wartortle");
-         System.out.println("9.for Blastoise");
+         System.out.println("1.Bulbasaur");
+         System.out.println("2.Ivysaur");
+         System.out.println("3.Venusaur");
+         System.out.println("4.Charmander");
+         System.out.println("5.Charmeleon");
+         System.out.println("6.Charizard");
+         System.out.println("7.Squirtle");
+         System.out.println("8.Wartortle");
+         System.out.println("9.Blastoise");
          System.out.println("Please choose from 1-9:");
          String species = scan.nextLine();
          species = species.trim();
