@@ -107,8 +107,9 @@ public class PokeNode<E> {
       rChild = newRChild;
    }
    
-   
-   
-   
+   public void setPokeData(Pokemon p)
+   {
+      pokeData = p; 
+   }
    
 } // end of class
