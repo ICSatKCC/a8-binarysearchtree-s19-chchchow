@@ -48,10 +48,113 @@ public class PokeDex {
          }
       }     
    
-   
-   
-   
    }
-
+   /**
+   * make pokemon static.
+   *@return null
+   */
+   public static Pokemon makePokemon() {
+      Scanner scan = new Scanner(System.in);
+      String name = "";
+      boolean endLoop2 = false; 
+      while (!endLoop2) { 
+         System.out.println("Please choose your own pokemon:");
+         System.out.println("1.for Bulbasaur");
+         System.out.println("2.for Ivysaur");
+         System.out.println("3.for Venusaur");
+         System.out.println("4.for Charmander");
+         System.out.println("5.for Charmeleon");
+         System.out.println("6.for Charizard");
+         System.out.println("7.for Squirtle");
+         System.out.println("8.for Wartortle");
+         System.out.println("9.for Blastoise");
+         System.out.println("Please choose from 1-9:");
+         String species = scan.nextLine();
+         species = species.trim();
+         System.out.println("Press enter or type in a name for your pokemon.");
+         name = scan.nextLine();
+         switch (species) {
+            case "1":
+               if (name.length() > 0) {
+                  Pokemon a = new Bulbasaur(name);
+                  return a;
+               } 
+               else {
+                  Pokemon b = new Bulbasaur();
+                  return b;
+               }
+            case "2":
+               if (name.length() > 0) {
+                  Pokemon c = new Ivysaur(name);
+                  return c;
+               } else {
+                  Pokemon d = new Ivysaur();
+                  return d;
+               }
+            case "3":
+               if (name.length() > 0) {
+                  Pokemon e = new Venusaur(name);
+                  return e;
+               } else {
+                  Pokemon f = new Venusaur();
+                  return f;
+               }
+            case "4":
+               if (name.length() > 0) {
+                  Pokemon g = new Charmander(name);
+                  return g;
+               } else {
+                  Pokemon h = new Charmander();
+                  return h;
+               }
+            case "5":
+               if (name.length() > 0) {
+                  Pokemon i = new Charmeleon(name);
+                  return i;
+               } else {
+                  Pokemon j = new Charmeleon();
+                  return j;
+               }
+            case "6":
+               if (name.length() > 0) {
+                  Pokemon k = new Charizard(name);
+                  return k;
+               } else {
+                  Pokemon l = new Charizard();
+                  return l;
+               }
+            case "7":
+               if (name.length() > 0) {
+                  Pokemon m = new Squirtle(name);
+                  return m;
+               } else {
+                  Pokemon n = new Squirtle();
+                  return n;
+               }            
+            case "8":
+               if (name.length() > 0) {
+                  Pokemon o = new Wartortle(name);
+                  return o;
+               } else {
+                  Pokemon p = new Wartortle();
+                  return p;
+               }          
+            case "9":
+               if (name.length() > 0) {
+                  Pokemon q = new Blastoise(name);
+                  return q;
+               } else {
+                  Pokemon r = new Blastoise();
+                  return r;
+               }
+            default: //not a valid menu entry
+               System.out.println("\n****Invalid menu choice.****");
+               System.out.println("No sufficient species selection");
+               System.out.println("Please only select from 1~9");
+         }   
+      }
+      System.out.println("****You have chosen and made your own pokemon****");
+      return null; 
+   } //end make pokemon. 
 
 }
