@@ -1,5 +1,5 @@
 /**
- * ICS 211 Assignment 8 PokeNode.
+ * ICS 211 Assignment 8 PokeTree.
  * @author CHOW, CHI HUNG
  * @since 4/22/2019
  * @param <T> The datatype held in Nodes.
