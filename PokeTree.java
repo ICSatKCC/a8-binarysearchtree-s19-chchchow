@@ -63,7 +63,7 @@ public class PokeTree<T extends java.lang.Comparable<Pokemon>> {
 	
 
    /**
-   * inOrder display of nodes, with newline between each node.
+   * inOrder display of ns, with newline between each n.
    * 
    * @param n The root of the tree/subtree
    * @return an inorder String of the tree
