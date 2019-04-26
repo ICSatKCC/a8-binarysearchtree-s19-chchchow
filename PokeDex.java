@@ -14,8 +14,9 @@ public class PokeDex {
    
       String sTemp = ""; 
       Scanner reader = new Scanner(System.in);
-      int x = 0;
       boolean endLoop = false; 
+      
+      PokeTree pTree = new PokeTree();
    
       while (!endLoop) {
          System.out.println("---HELLO,WELCOME---");
@@ -33,13 +34,19 @@ public class PokeDex {
                System.out.println("Good bye!");
                break;
             case "1":  
-                     //
+               pTree.add(PokeDex.makePokemon());
                break; 
             case "2": 
-               //
+               Pokemon p = PokeDex.makePokemon();
+               try {
+                  pTree.remove(p); 
+               }
+               catch (PokemonException e) {
+                  System.out.println("No pokemon to trade");
+               }               
                break;   
             case "3": 
-               //
+               pTree.inOrderPrint();
                break;      
             default: //not a valid menu entry
                System.out.println("\n****Invalid menu choice.****");
@@ -56,8 +63,8 @@ public class PokeDex {
    public static Pokemon makePokemon() {
       Scanner scan = new Scanner(System.in);
       String name = "";
-      boolean endLoop2 = false; 
-      while (!endLoop2) { 
+      boolean endLoop2 = true; 
+      while (endLoop2) { 
          System.out.println("Please choose your own pokemon:");
          System.out.println("1.for Bulbasaur");
          System.out.println("2.for Ivysaur");

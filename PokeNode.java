@@ -45,7 +45,7 @@ public class PokeNode<E> {
    * Get method for pokeData.
    * @return pokeData
    */
-   public Pokemon getPokeData() {
+   public Pokemon getPokemon() {
       return pokeData;
    }
    
@@ -74,14 +74,14 @@ public class PokeNode<E> {
    }
 
    /**
-	* This method will increment the numCaught in a node.
+	*increment numCaught.
    */
    public void increaseNumCaught() {
       numCaught++;
    }
    
    /**
-   * This method will decrement numCaught in a given node.
+   * decrement numCaught.
    * @throws PokemonException if numCaught becomes < 1
    */
    public void decreaseNumCaught() throws PokemonException {
@@ -93,22 +93,25 @@ public class PokeNode<E> {
    }
    
   /**
-  * This method will set newLNode as the left child of a node.
+  * Set method for lChild.
   * @param newLChild set to LChild.
   */
    public void setLChild(PokeNode newLChild) {
       lChild = newLChild;
    }
   /**
-  * This method will set newRNode as the right child of a node.
+  * Set method for rChild.
   * @param newRChild set to rChild.
   */
    public void setRChild(PokeNode newRChild) {
       rChild = newRChild;
    }
    
-   public void setPokeData(Pokemon p)
-   {
+    /**
+  * Set method for rChild.
+  * @param p set to pokeData.
+  */
+   public void setPokeData(Pokemon p) {
       pokeData = p; 
    }
    

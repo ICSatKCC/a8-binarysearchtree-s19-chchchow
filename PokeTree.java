@@ -31,55 +31,41 @@ public class PokeTree<T extends java.lang.Comparable<Pokemon>> {
    */
    private PokeNode add(PokeNode<Pokemon> n, Pokemon p) {
    
-      if (n == null)
-      {
+      if (n == null) {
          return new PokeNode<Pokemon>(p, 0, null, null);
       }
-         //Otherwise duplicate the n and throw an exception.
-      else if (p.compareTo(n.getPokeData()) == 0)
-      {
+      else if (p.compareTo(n.getPokemon()) == 0) {
          throw new PokemonException("Duplicate items is not allowed!!!");      
       }
-      else if (p.compareTo(n.getPokeData()) < 0)
-      {
+      else if (p.compareTo(n.getPokemon()) < 0) {
          n.setLChild(this.add(n.getLChild(), p));
          return n;
       }
-      else
-      {
+      else {
          n.setRChild(this.add(n.getRChild(), p));
          return n;
       }
    }
          
    /**
-   * called automatically by println/print method.
-   * 
-   * @return an inorder String of the tree
+   * print In Order.
    */
-   public String toString() {
-      return this.inOrder(root);
-   }
-	
+   public void inOrderPrint() {
+      this.inOrderPrint(root);
+   }   	
 
    /**
    * inOrder display of ns, with newline between each n.
-   * 
-   * @param n The root of the tree/subtree
-   * @return an inorder String of the tree
+   * @param r The root of the tree/subtree
    */
-   private String inOrder(PokeNode<Pokemon> n) {
-      String displayNodes = "";
-      if (n != null) {
-         displayNodes = displayNodes 
-            + this.inOrder(n.getLChild());
-         displayNodes = displayNodes + n.toString() + "\n";
-         displayNodes = displayNodes 
-            + this.inOrder(n.getRChild());
+   private void inOrderPrint(PokeNode r) {
+      if (r != null) {
+         inOrderPrint(r.getLChild());
+         System.out.println("  " + r.getPokemon().toString()
+                + "\nCaught: " + r.getNumCaught());
+         inOrderPrint(r.getRChild());
       }
-      return displayNodes;
-   }
-   
+   }           
    /**
    * Pre-Order traversal of tree.
    * 
@@ -118,8 +104,6 @@ public class PokeTree<T extends java.lang.Comparable<Pokemon>> {
 
   /**
    * Recursive postOrder traversal of tree.
-   * To display ns, with newline between each n
-   * 
    * @param n The root of the tree/subtree
    * @return a post-Order String of the tree
    */
@@ -154,10 +138,10 @@ public class PokeTree<T extends java.lang.Comparable<Pokemon>> {
          throw new PokemonException("No duplicated item allowed");
       } 
       else {
-         if (searchKey2.compareTo(n.getPokeData()) == 0) {
-            return n.getPokeData();
+         if (searchKey2.compareTo(n.getPokemon()) == 0) {
+            return n.getPokemon();
          }
-         else if (searchKey2.compareTo(n.getPokeData()) < 0) {
+         else if (searchKey2.compareTo(n.getPokemon()) < 0) {
             return this.get(n.getLChild(), searchKey2);
          }
          else {
@@ -189,12 +173,12 @@ public class PokeTree<T extends java.lang.Comparable<Pokemon>> {
          throw new PokemonException("Item does not exist!!!");
       }
        //If the key is less than root, move to left side
-      else if (searchKey4.compareTo(n.getPokeData()) < 0) {
+      else if (searchKey4.compareTo(n.getPokemon()) < 0) {
          n.setLChild(this.remove(n.getLChild(), searchKey4));
          return n;
       }
       //If the search key is greater than root, move to the right 
-      else if (searchKey4.compareTo(n.getPokeData()) > 0) {
+      else if (searchKey4.compareTo(n.getPokemon()) > 0) {
          n.setRChild(this.remove(n.getRChild(), searchKey4));
          return n;
       }
@@ -242,7 +226,7 @@ public class PokeTree<T extends java.lang.Comparable<Pokemon>> {
    private Pokemon getTreeBig(PokeNode<Pokemon> n) {
       // if no right child, then this node contains the largest item
       if (n.getRChild() == null) {
-         return n.getPokeData();
+         return n.getPokemon();
       
       // if not, keep looking on the right
       } else {
@@ -260,7 +244,8 @@ public class PokeTree<T extends java.lang.Comparable<Pokemon>> {
    * @return root of (sub)tree with node removed.
    */
    private PokeNode<Pokemon> removeTreeBig(PokeNode<Pokemon> n) {
-      //No right child, largest node found, replace with node to the left.
+   // if no right child, then this node contains the largest item
+   // so replace it with its left child.
       if (n.getRChild() == null) {
          return n.getLChild();
        // if not, keep looking on the right
